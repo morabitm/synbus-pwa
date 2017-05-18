@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SynBus</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="manifest" href="./manifest.json">
+</head>
+<body>
+    <div class="app app__layout">
+      <header>
+        <span class="header__icon">
+          <svg class="menu__icon no--select" width="24px" height="24px" viewBox="0 0 48 48" fill="#fff">
+            <path d="M6 36h36v-4H6v4zm0-10h36v-4H6v4zm0-14v4h36v-4H6z"></path>
+          </svg>
+        </span>
+        <span class="header__title no--select">SynBus - Map demo</span>
+        <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
+      </header>
+
+      <div class="menu">
+        <div class="menu__header"></div>
+        <ul class="menu__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="latest.html">Latest</a></li>
+		  <li><a href="map.html">Map</a></li>
+		  <li><a href="locatie.html">Locatie</a></li>
+        </ul>
+      </div>
+      
+      <div class="menu__overlay"></div>
+
+      <section class="card_container">
+        <h2 style="margin-top:70px;" align="center">Map Demo</h2>
+      
+<!--
+        <div class="container" id="map">			 
+    -->       
+        </div>
+      </section>
+
+       <div class="loader">
+          <svg viewBox="0 0 32 32" width="32" height="32">
+            <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+          </svg>
+        </div>
+
+      <!-- Toast msg's  -->
+      <div class="toast__container"></div>      
+    </div>
+
+   <div id="map"></div>     
+  
+   <script>
+
+// In the following example, markers appear when the user clicks on the map.
+// The markers are stored in an array.
+// The user can then click an option to hide, show or delete the markers.
+var map;
+
+function initMap() {
+  var marker1 = {lat: 52.166890, lng: 5.340858};
+  var marker2 = {lat: 52.332806, lng: 5.519431};
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: marker1,
+    //mapTypeId: google.maps.MapTypeId.TERRAIN
+  });
+
+  // Adds a marker on the map.
+  addMarker(marker1);
+  addMarker(marker2);
+}
+
+// Adds a marker to the map and push to the array.
+function addMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+  
+}
+    </script>
+   
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRiMFYK_rXyhQKz0qZxTN11fkNrsb3WL0&signed_in=true&callback=initMap"></script>
+		
+
+<script src="./js/app.js"></script>  
+<script src="./js/toast.js"></script>
+<script src="./js/offline.js"></script>
+<script src="./js/menu.js"></script>
+  
+</body>
+</html>
